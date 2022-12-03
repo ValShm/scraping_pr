@@ -1,0 +1,73 @@
+[
+{
+  "model": "scraping.city",
+  "pk": 1,
+  "fields": {
+    "name": "Санкт-Петербург",
+    "slug": "sankt-peterburg"
+  }
+},
+{
+  "model": "scraping.city",
+  "pk": 2,
+  "fields": {
+    "name": "Москва",
+    "slug": "moskva"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "slug": "python"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 2,
+  "fields": {
+    "name": "java",
+    "slug": "java"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 1,
+  "fields": {
+    "url": "https://spb.hh.ru/vacancy/72225947?query=Python%20developer&from=vacancy_search_catalog&hhtmFrom=vacancy_search_catalog",
+    "title": "Backend Python developer",
+    "company": "modesco",
+    "description": "Разработка нового функционала проекта и фич. Поддержка существующего функционала. Интеграции с внешними сервисами.",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2022-11-20"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 2,
+  "fields": {
+    "url": "https://spb.hh.ru/vacancy/72232525?from=vacancy_search_list&query=python",
+    "title": "Python разработчик",
+    "company": "Банк ВТБ (ПАО)",
+    "description": "Разрабатывать и поддерживать облачную платформу. Автоматизировать процессы, связанные с жизненным циклом компонентов инфраструктуры.​​​​​​​.",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2022-11-26"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 3,
+  "fields": {
+    "url": "https://spb.hh.ru/analytics_source/vacancy/69955191?from=vacancy_search_list&query=java&requestId=1669544429890f127176d14ef9c5a414&totalVacancies=740&position=0&source=vacancies",
+    "title": "Team Lead (Java)",
+    "company": "ВТБ",
+    "description": "Участие в разработке системы управления архитектурой предприятия. Руководство командой бэкенд разработчиков. Разработка бэкенд функциональности инструмента (написание кода) в соответствии с...\r\nОпыт разработки с использованием современных технологий Java. Умение проводить технический анализ функциональных требований, при необходимости трансформировать их в системные требования.",
+    "city": 2,
+    "language": 2,
+    "timestamp": "2022-11-27"
+  }
+}
+]
