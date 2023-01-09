@@ -1,7 +1,12 @@
 from django.db import models
+from .headhanter import *
+
 
 from scraping.utils import from_cyrillic_to_eng
 
+
+def default_urls():
+    return {"hh_work": URL, "rabota": "", "work": ""}
 
 class City(models.Model):
     name = models.CharField(max_length=50,
@@ -54,8 +59,28 @@ class Vacancy(models.Model):
     class Meta :
         verbose_name = 'Вакансия'
         verbose_name_plural = 'Вакансии'
+        ordering = ['-timestamp']
 
     def __str__(self) :
         return self.title
+
+
+class Error(models.Model):
+    timestamp = models.DateField(auto_now_add=True)
+    data = models.JSONField()
+
+
+class Url(models.Model):
+    city = models.ForeignKey('City', on_delete=models.CASCADE, verbose_name='Город')
+    language = models.ForeignKey('Language', on_delete=models.CASCADE,
+                                 verbose_name='Язык программирования')
+    url_data = models.JSONField(default=default_urls)
+
+    class Meta:
+        unique_together = ("city", "language")
+
+
+
+
 
 
