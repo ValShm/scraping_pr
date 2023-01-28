@@ -195,7 +195,8 @@ celerybeat-schedule
 
 # dotenv
 .env
-
+*.local_settings.py
+local_settings.py
 # virtualenv
 .venv
 venv/

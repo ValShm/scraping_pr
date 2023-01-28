@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <h4 my-2>Настройки</h4>
+        <form method="post" action="">
+            {% csrf_token %}
+          <div class="form-group">
+            {{form.as_p}}
+          </div>
+          <button type="submit" class="btn btn-primary">Сохранить</button>
+
+        </form>
+        <form method="post" action="{% url 'accounts:delete' %}">
+            {% csrf_token %}
+          <button type="submit" class="btn btn-danger my-3">Удалить</button>
+
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <p class="my-2">Если Вы не нашли подходящий набор данных, заполните форму ниже с Вашими пожеланиями.
+        Мы добавим и пришлем уведомление на почту.</p>
+        <p>
+          <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
+            Показать форму
+          </button>
+        </p>
+        <div class="collapse" id="collapse">
+          <div class="card card-body">
+            <form method="post" action="{% url 'accounts:contact' %}">
+                {% csrf_token %}
+              <div class="form-group">
+                {{contact_form.as_p}}
+              </div>
+              <button type="submit" class="btn btn-primary">Отправить</button>
+           </form>
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

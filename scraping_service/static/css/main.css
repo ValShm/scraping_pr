@@ -1,0 +1,8 @@
+@font-face {
+    font-family: WendyOne;
+    scraping_service: url(../fonts/WendyOne-Regular.ttf);
+}
+#brand {
+    font-family: WendyOne;
+    color: #FFF;
+}

@@ -36,10 +36,13 @@ def get_settings():
 
 def get_urls(_settings):
     qs = Url.objects.all().values()
+    #print(qs)
     url_dict = {(q['city_id'], q['language_id']): q['url_data'] for q in qs}
+    #print(url_dict)
     urls = []
     for pair in _settings:
-        if pair in url_dict:
+       if pair in url_dict:
+            #print(pair)
             tmp = {}
             tmp['city'] = pair[0]
             tmp['language'] = pair[1]
@@ -47,6 +50,7 @@ def get_urls(_settings):
             if url_data:
                 tmp['url_data'] = url_dict.get(pair)
                 urls.append(tmp)
+    #print(urls)
     return urls
 
 
@@ -56,8 +60,10 @@ async def main(value):
     errors.extend(err)
     jobs.extend(job)
 
+
 settings = get_settings()
 url_list = get_urls(settings)
+print(url_list)
 
 #loop = asyncio.get_event_loop()
 loop = asyncio.new_event_loop()
@@ -65,7 +71,7 @@ asyncio.set_event_loop(loop)
 tmp_tasks = [(func, data['url_data'][key], data['city'], data['language'])
              for data in url_list
              for func, key in parsers]
-
+print(tmp_tasks)
 # for data in url_list:
 #
 #     for func, key in parsers:
@@ -73,10 +79,10 @@ tmp_tasks = [(func, data['url_data'][key], data['city'], data['language'])
 #         j, e = func(url, city=data['city'], language=data['language'])
 #         jobs += j
 #         errors += e
-if tmp_tasks:
-    tasks = asyncio.wait([loop.create_task(main(f)) for f in tmp_tasks])
-    loop.run_until_complete(tasks)
-    loop.close()
+#if tmp_tasks:
+tasks = asyncio.wait([loop.create_task(main(f)) for f in tmp_tasks])
+loop.run_until_complete(tasks)
+loop.close()
 
 
 for job in jobs:
@@ -97,7 +103,7 @@ if errors:
 # h = codecs.open('work.txt', 'w', 'utf-8')
 # h.write(str(jobs))
 # h.close()
-ten_days_ago = dt.date.today() - dt.timedelta(10)
+ten_days_ago = dt.date.today() - dt.timedelta(30)
 Vacancy.objects.filter(timestamp__lte=ten_days_ago).delete()
 
 #save_to_csv(jobs, file_name)
